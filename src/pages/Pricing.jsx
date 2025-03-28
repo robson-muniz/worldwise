@@ -1,9 +1,11 @@
 import React from 'react';
+import PageNav from "../components/PageNav.jsx";
 
 function Pricing() {
   return (
     <div>
-      Pricing page
+      <PageNav/>
+      <h1>Pricing page </h1>
     </div>
   );
 }

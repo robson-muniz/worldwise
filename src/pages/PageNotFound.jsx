@@ -1,9 +1,11 @@
 import React from 'react';
+import PageNav from "../components/PageNav.jsx";
 
 function PageNotFound() {
   return (
     <div>
-      Not found :(
+      <PageNav/>
+      <h1>Not found :( </h1>
     </div>
   );
 }
