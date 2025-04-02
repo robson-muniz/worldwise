@@ -7,7 +7,7 @@ function Homepage() {
     <div>
       <PageNav/>
       <h1>Homepage</h1>
-      <Link to="/pricing">Pricing</Link>
+      <Link to="/app">Go to the App</Link>
     </div>
   );
 }
