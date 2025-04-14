@@ -11,7 +11,7 @@ import CityList from "./components/CityList.jsx";
 import CountryList from "./components/CountryList.jsx";
 import City from "./components/City.jsx";
 
-const BASE_URL = "http://localhost:9000/"; // Keep trailing slash
+const BASE_URL = "http://localhost:3000/"; // Keep trailing slash
 
 function App() {
   const [cities, setCities] = useState([])
@@ -26,7 +26,7 @@ function App() {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`); // Check for HTTP errors
 
         const data = await res.json();
-        console.log("Fetched data:", data); // Debugging log
+        // console.log("Fetched data:", data); // Debugging log
 
         // Handle both response formats (array vs object with cities property)
         setCities(data.cities || data);
