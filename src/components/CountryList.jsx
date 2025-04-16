@@ -28,7 +28,7 @@ function CountryList({ cities, isLoading }) {
       {/* Map through cities array to create CityItem components */}
       {countries.map((country) => (
         // Individual country item component
-        <CountryItem key={country.id} country={country} />
+        <CountryItem key={country.country} country={country} />
 
       ))}
     </ul>

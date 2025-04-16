@@ -9,17 +9,30 @@ const formatDate = (date) =>
     }).format(new Date(date));
 
 function CityItem({ city }) {
- const {cityName, emoji, date, id, position } = city;
-  console.log(position);
+  const { cityName, emoji, date, id, position } = city;
+
+  function handleDelete(e) {
+    e.preventDefault();
+    // Add delete logic here
+  }
 
   return (
-    <li >
-      <Link className={styles.cityItem} to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
+    <li className={styles.cityItem}>
       <span className={styles.emoji}>{emoji}</span>
-      <h3 className={styles.name}>{cityName}</h3>
-      <time className={styles.date}>({formatDate(date)})</time>
-      <button className={styles.deleteBtn}>&times;</button>
+      <Link
+        className={styles.cityLink}
+        to={`${id}?lat=${position.lat}&lng=${position.lng}`}
+      >
+        <h3 className={styles.name}>{cityName}</h3>
+        <time className={styles.date}>({formatDate(date)})</time>
       </Link>
+      <button
+        className={styles.deleteBtn}
+        onClick={handleDelete}
+        aria-label="Delete city"
+      >
+        &times;
+      </button>
     </li>
   );
 }
