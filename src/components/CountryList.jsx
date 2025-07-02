@@ -3,7 +3,7 @@ import styles from "./CountryList.module.css"; // Component-specific CSS using C
 import Spinner from "./Spinner.jsx"; // Loading spinner component
 import Message from "./Message.jsx";
 import CountryItem from "./CountryItem.jsx";
-import city from "./City.jsx"; // Reusable country item component
+import City from "./City.jsx"; // Reusable country item component
 
 // CityList component displays a list of cities with loading state handling
 // Props:
@@ -29,7 +29,6 @@ function CountryList({ cities, isLoading }) {
       {countries.map((country) => (
         // Individual country item component
         <CountryItem key={country.country} country={country} />
-
       ))}
     </ul>
   );
