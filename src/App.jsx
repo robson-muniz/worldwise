@@ -49,7 +49,7 @@ function App() {
     }
 
     fetchCities(); // Execute the fetch function
-  }, []); // Empty dependency array means this runs only once on component mount
+  }, []); // Empty dependency array means this runs only once on component mount!
 
   // Main component render
   return (
