@@ -2,13 +2,15 @@
 import styles from "./CityList.module.css"; // Component-specific CSS using CSS Modules
 import Spinner from "./Spinner.jsx"; // Loading spinner component
 import CityItem from "./CityItem.jsx";
-import Message from "./Message.jsx"; // Reusable city item component
+import Message from "./Message.jsx";
+import {useCities} from "../contexts/CitiesContext.jsx"; // Reusable city item component
 
 // CityList component displays a list of cities with loading state handling
 // Props:
 // - cities: Array of city objects to display
 // - isLoading: Boolean indicating data loading status
-function CityList({ cities, isLoading }) {
+function CityList() {
+    const {cities, isLoading} = useCities();
   // Show loading spinner while data is being fetched
   if (isLoading) return <Spinner />;
 

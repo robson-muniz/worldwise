@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from "react";
+import React, {createContext, useState, useEffect, useContext} from "react";
 
 // Define base API URL (note: in production, this would typically come from environment variables)
 const BASE_URL = 'http://localhost:8000/'; // Keep trailing slash
@@ -38,4 +38,11 @@ function CitiesProvider({ children }) {
     return <CitiesContext.Provider value={{ cities, isLoading }}>{children}</CitiesContext.Provider>;
 }
 
-export { CitiesProvider };
+// Moved the useCities function outside of CitiesProvider
+function useCities() {
+    const context = useContext(CitiesContext);
+    if (context === undefined) throw new Error('Cities must be used within CitiesProvider');
+    return context;
+}
+
+export { CitiesProvider, useCities };
