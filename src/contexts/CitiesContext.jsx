@@ -38,7 +38,7 @@ function CitiesProvider({ children }) {
     return <CitiesContext.Provider value={{ cities, isLoading }}>{children}</CitiesContext.Provider>;
 }
 
-// Moved the useCities function outside of CitiesProvider
+// Moved the useCities function outside of CitiesProvider!
 function useCities() {
     const context = useContext(CitiesContext);
     if (context === undefined) throw new Error('Cities must be used within CitiesProvider');
