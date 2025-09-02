@@ -24,39 +24,18 @@ function App() {
         <CitiesProvider>
             {/* Set up the router for the application */}
             <BrowserRouter>
-                {/* Define all application routes */}
                 <Routes>
-                    {/* Home route (index) */}
                     <Route index element={<Homepage />} />
-
-                    {/* Other top-level routes */}
                     <Route path="product" element={<Product />} />
                     <Route path="pricing" element={<Pricing />} />
-                    <Route path="/login" element={<Login />} />
-
-                    {/* Nested routes under the AppLayout */}
+                    <Route path="login" element={<Login />} />
                     <Route path="app" element={<AppLayout />}>
-                        {/* Default nested route redirects to cities */}
-                        <Route index element={<Navigate to="cities" replace />} />
-
-                        {/* Cities-related routes */}
-                        <Route
-                            path="cities"
-                            element={<CityList />}
-                        />
-                        <Route path="cities/:id" element={<City />} />
-
-                        {/* Countries route */}
-                        <Route
-                            path="countries"
-                            element={<CountryList />}
-                        />
-
-                        {/* Form route */}
+                        <Route index element={<Map />} />
+                        <Route path="cities" element={<CityList />} />
+                        <Route path="countries" element={<CountryList />} />
                         <Route path="form" element={<Form />} />
+                        <Route path="cities/:id" element={<City />} />
                     </Route>
-
-                    {/* Catch-all route for 404 errors */}
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </BrowserRouter>

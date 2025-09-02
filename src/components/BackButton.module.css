@@ -1,0 +1,17 @@
+.backButton {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: var(--color-dark--2);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.backButton:hover {
+    background-color: var(--color-dark--1);
+}
