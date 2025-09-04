@@ -1,47 +1,62 @@
 .city {
-  padding: 2rem 3rem;
-  max-height: 70%;
-  background-color: var(--color-dark--2);
-  border-radius: 7px;
-  overflow: scroll;
-
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+    padding: 2rem;
 }
 
-.row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.backBtn {
+    background-color: var(--color-dark--2, #2d3439);
+    border: none;
+    border-radius: 0.6rem;
+    color: inherit;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
-.city h6 {
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--color-light--1);
+.panel {
+    background-color: var(--color-dark--1, #42484d);
+    padding: 2rem;
+    border-radius: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem; /* leaves space for back button */
 }
 
-.city h3 {
-  font-size: 1.9rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.backBtn {
+    background-color: var(--color-dark--2, #2d3439);
+    border: none;
+    border-radius: 0.6rem;
+    color: inherit;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
 }
 
-.city h3 span {
-  font-size: 3.2rem;
-  line-height: 1;
+.panel h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-.city p {
-  font-size: 1.6rem;
+.emoji {
+    font-size: 1.6rem;
 }
 
-.city a:link,
-.city a:visited {
-  font-size: 1.6rem;
-  color: var(--color-brand--1);
+.label {
+    display: block;
+    margin-top: 1.2rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-light--2, #9aa5b1);
+}
+
+a {
+    color: var(--color-brand, #00c46a);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
 }
