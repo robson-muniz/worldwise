@@ -1,5 +1,5 @@
 // Import routing components from react-router-dom
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Import page components
 import Product from './pages/Product.jsx';
@@ -12,8 +12,9 @@ import Login from './pages/Login.jsx';
 // Import component modules
 import CityList from './components/CityList.jsx';
 import CountryList from './components/CountryList.jsx';
-import City from './components/City.jsx';
+import City from "./pages/City.jsx";
 import Form from './components/Form.jsx';
+import Map from './components/Map.jsx'; // ← ADD THIS IMPORT!
 import { CitiesProvider } from "./contexts/CitiesContext.jsx";
 
 // Main App component
@@ -30,7 +31,7 @@ function App() {
                     <Route path="pricing" element={<Pricing />} />
                     <Route path="login" element={<Login />} />
                     <Route path="app" element={<AppLayout />}>
-                        <Route index element={<Map />} />
+                        <Route index element={<Map />} /> {/* Now Map is imported */}
                         <Route path="cities" element={<CityList />} />
                         <Route path="countries" element={<CountryList />} />
                         <Route path="form" element={<Form />} />
