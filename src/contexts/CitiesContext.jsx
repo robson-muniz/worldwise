@@ -1,30 +1,26 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect, useContext, useCallback } from "react";
 
-// Define base API URL (note: in production, this would typically come from environment variables)
-const BASE_URL = 'http://localhost:8000/'; // Keep trailing slash
+// Define base API URL
+const BASE_URL = 'http://localhost:8000';
 
 const CitiesContext = createContext();
 
 function CitiesProvider({ children }) {
-    // State for storing cities data and loading status
     const [cities, setCities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [currentCity, setCurrentCity] = useState({});
 
-    // Effect hook to fetch cities data when component mounts
+    // Fetch all cities on mount
     useEffect(() => {
         async function fetchCities() {
             try {
                 setIsLoading(true);
-                const res = await fetch(`${BASE_URL}cities`);
+                const res = await fetch(`${BASE_URL}/cities`);
 
-                // Check for HTTP errors
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
                 const data = await res.json();
-
-                // Handle both response formats (array vs object with cities property)
-                setCities(data.cities || data);
+                setCities(data);
             } catch (err) {
                 console.error('Fetch error:', err);
                 alert(`Could not fetch cities: ${err.message}`);
@@ -33,36 +29,49 @@ function CitiesProvider({ children }) {
             }
         }
 
-        fetchCities(); // Execute the fetch function
-    }, []); // Empty dependency array means this runs only once on component mount!
+        fetchCities();
+    }, []);
 
+    // Get individual city by ID
     async function getCity(id) {
+        // Don't fetch if we already have this city
+        if (Number(id) === currentCity.id) return;
+
         try {
             setIsLoading(true);
-            const res = await fetch(`${BASE_URL}cities/${id}`); // Fixed: Added id parameter
+            const res = await fetch(`${BASE_URL}/cities/${id}`);
 
-            // Check for HTTP errors
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
             const data = await res.json();
-
-            // Handle both response formats (array vs object with cities property)
-            setCurrentCity(data.city || data); // Fixed: Changed to data.city (more logical)
+            setCurrentCity(data);
         } catch (err) {
             console.error('Fetch error:', err);
-            alert(`Could not fetch city: ${err.message}`); // Fixed: Changed error message
+            alert(`Could not fetch city: ${err.message}`);
         } finally {
             setIsLoading(false);
         }
-    } // Fixed: Added missing closing brace for getCity function
+    }
 
-    return <CitiesContext.Provider value={{ cities, isLoading, currentCity, getCity }}>{children}</CitiesContext.Provider>;
+    return (
+        <CitiesContext.Provider
+            value={{
+                cities,
+                isLoading,
+                currentCity,
+                getCity
+            }}
+        >
+            {children}
+        </CitiesContext.Provider>
+    );
 }
 
-// Moved the useCities function outside of CitiesProvider!
 function useCities() {
     const context = useContext(CitiesContext);
-    if (context === undefined) throw new Error('Cities must be used within CitiesProvider');
+    if (context === undefined) {
+        throw new Error('useCities must be used within a CitiesProvider');
+    }
     return context;
 }
 

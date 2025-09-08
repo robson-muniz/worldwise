@@ -2,6 +2,11 @@
     padding: 2rem;
 }
 
+.cityItem--active {
+    border: 2px solid var(--color-brand-2);
+    border-left: 5px solid var(--color-brand-2);
+}
+
 .backBtn {
     background-color: var(--color-dark--2, #2d3439);
     border: none;

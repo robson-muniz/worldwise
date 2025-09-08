@@ -1,3 +1,8 @@
+.cityItem--active {
+    border: 2px solid var(--color-brand-2) !important;
+    border-left: 5px solid var(--color-brand-2) !important;
+}
+
 .cityItem:link,
 .cityItem:visited {
     display: flex;
