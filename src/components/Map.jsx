@@ -36,7 +36,7 @@ function Map() {
                 {cities.map((city) => (<Marker position={[city.position.lat,city.position.lng]} key={city.id}>
                     <Popup>
                         <span>{city.emoji}</span>
-                        <span>{city.name}</span>
+                        <span>{city.cityName}</span>
                     </Popup>
                 </Marker>))}
             </MapContainer>
